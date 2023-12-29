@@ -9,12 +9,17 @@ import styles from "./Layout.module.scss";
 
 const AdminLayoutProps = {
   children: PropTypes.node.isRequired,
+  notificationPopUp:PropTypes.any
 };
 
 const AdminLayout: NextPage<InferProps<typeof AdminLayoutProps>> = ({
   children,
 }) => {
   const router = useRouter();
+
+  const notificationPopUp = (e:any) => {
+    e.preventDefault();
+  }
 
   return (
     <div className="w-full flex">
@@ -28,6 +33,7 @@ const AdminLayout: NextPage<InferProps<typeof AdminLayoutProps>> = ({
                 ? "Search"
                 : "Search candidates"
             }`}
+            notificationPopUp={notificationPopUp}
             avatar={avatar}
             avatarText="Ready to interview"
           />

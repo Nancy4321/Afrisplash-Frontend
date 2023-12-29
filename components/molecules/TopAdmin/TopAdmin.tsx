@@ -7,7 +7,8 @@ import PropTypes, { InferProps } from "prop-types";
 const TopAdminProps = {
   placeholder:PropTypes.string.isRequired,
   avatar:PropTypes.string.isRequired,
-  avatarText:PropTypes.string.isRequired
+  avatarText:PropTypes.string.isRequired,
+  notificationPopUp:PropTypes.any
 }
 
 
@@ -15,7 +16,8 @@ export default function TopAdmin({
   placeholder,
   avatar,
   avatarText,
-}: InferProps<typeof TopAdminProps>):JSX.Element {
+  notificationPopUp
+}: InferProps<typeof TopAdminProps>): JSX.Element {
   return (
     <div className="h-20 flex items-center sticky top-0 z-40 w-full justify-between bg-[#FAFAFA]">
       <div className="w-5/12">
@@ -23,8 +25,12 @@ export default function TopAdmin({
       </div>
       <section className="flex space-x-20 items-center">
         <div className="flex space-x-10">
-          <GiftIcon className="w-5 h-5" />
-          <BellIcon className="w-5 h-5" />
+          <span>
+            <GiftIcon className="w-5 h-5" />
+          </span>
+          <span onClick={notificationPopUp}>
+            <BellIcon className="w-5 h-5" />
+          </span>
         </div>
         <div>
           <AdminLoginAvatar imageSrc={avatar} text={avatarText} />
